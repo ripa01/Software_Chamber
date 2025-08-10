@@ -90,15 +90,14 @@ export default function WhyChoose() {
           </button>
 
           {/* Track */}
-          <div
-            ref={trackRef}
-            className="
-              flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory
-              pb-2 [-ms-overflow-style:none] [scrollbar-width:none]
-            "
-            // hide scrollbars
-            style={{ scrollbarWidth: "none" } as React.CSSProperties}
-          >
+        <div
+  ref={trackRef}
+  className={`
+    hide-scrollbar
+    flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory
+    pb-2 [-ms-overflow-style:none] [scrollbar-width:none]
+  `}
+>
             {/* hide scrollbars (webkit) */}
             <style jsx>{`
               div::-webkit-scrollbar {

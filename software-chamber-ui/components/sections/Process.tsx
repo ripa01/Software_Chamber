@@ -3,12 +3,12 @@
 export default function Process() {
   // tuned angles so ends don't sit on the edges
   const steps = [
-    { n: 1, label: "Code",    angle: -162 },
-    { n: 2, label: "Build",   angle: -132 },
-    { n: 3, label: "Test",    angle: -102 },
-    { n: 4, label: "Release", angle:  -78 },
-    { n: 5, label: "Deploy",  angle:  -50 },
-    { n: 6, label: "Monitor", angle:  -24 },
+    { n: 1, label: "Code",    angle: 162 },
+    { n: 2, label: "Build",   angle: 132 },
+    { n: 3, label: "Test",    angle: 102 },
+    { n: 4, label: "Release", angle:  78 },
+    { n: 5, label: "Deploy",  angle:  50 },
+    { n: 6, label: "Monitor", angle:  24 },
     { n: 7, label: "Build",   angle:    6 },
   ] as const;
 
@@ -45,10 +45,9 @@ export default function Process() {
 
       {/* arc + pins + labels + globe */}
       <div className="relative mx-auto mt-16 max-w-6xl px-4">
-        {/* allow overflow so left/right labels don't clip */}
         <div className="relative aspect-[2/1] overflow-visible sm:aspect-[5/2]">
           {/* dashed semicircle */}
-          <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full overflow-visible">
+          <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full overflow-visible z-30">
             <defs>
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="6" result="blur" />
@@ -105,21 +104,21 @@ export default function Process() {
           })}
 
           {/* hemisphere globe (glow + dotted mask) */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center" style={{ height: "60%", zIndex: 0 }}>
-            <div className="relative w-[60vw] max-w-[600px] aspect-square -translate-y-[30%]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-32%] flex justify-center z-0" style={{ height: "60%" }}>
+            <div className="relative w-[60vw] max-w-[700px] aspect-square">
               {/* teal glow underlay */}
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_60%,rgba(16,185,129,0.55),rgba(16,185,129,0.18)_50%,transparent_80%)]" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_70%,rgba(16,185,129,0.55),rgba(16,185,129,0.18)_50%,transparent_80%)]" />
               {/* dotted sphere clipped to a hemisphere */}
               <div
                 className="absolute inset-0 rounded-full"
                 style={{
                   backgroundImage:
-                    "radial-gradient(rgba(45,255,220,0.55) 0.8px, transparent 0.8px)",
-                  backgroundSize: "5px 5px",
+                    "radial-gradient(rgba(45,255,220,0.55) 0.7px, transparent 0.7px)",
+                  backgroundSize: "4px 4px",
                   WebkitMaskImage:
-                    "linear-gradient(to top, #000 60%, transparent 100%)",
+                    "linear-gradient(to top, transparent 0%, #000 50%, #000 100%)",
                   maskImage:
-                    "linear-gradient(to top, #000 60%, transparent 100%)",
+                    "linear-gradient(to top, transparent 0%, #000 50%, #000 100%)",
                   opacity: 0.95,
                   filter: "drop-shadow(0 0 40px rgba(16,185,129,0.35))",
                 }}
@@ -129,9 +128,9 @@ export default function Process() {
                 className="absolute inset-0 rounded-full ring-2 ring-emerald-400/40"
                 style={{
                   WebkitMaskImage:
-                    "linear-gradient(to top, #000 60%, transparent 100%)",
+                    "linear-gradient(to top, transparent 0%, #000 50%, #000 100%)",
                   maskImage:
-                    "linear-gradient(to top, #000 60%, transparent 100%)",
+                    "linear-gradient(to top, transparent 0%, #000 50%, #000 100%)",
                 }}
               />
             </div>

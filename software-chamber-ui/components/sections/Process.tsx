@@ -1,6 +1,8 @@
 "use client";
 
+
 export default function Process() {
+  const pct = (v: number) => `${v.toFixed(4)}%`;
   // tuned angles so ends don't sit on the edges
   const steps = [
     { n: 1, label: "Code",    angle: 162 },
@@ -76,7 +78,7 @@ export default function Process() {
               <div
                 key={i}
                 className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
-                style={{ left: `${(x / W) * 100}%`, top: `${(y / H) * 100}%` }}
+                style={{ left: pct((x / W) * 100), top: pct((y / H) * 100) }}
               >
                 <div className="grid h-8 w-8 place-items-center rounded-full bg-white/18 ring-1 ring-white/35 backdrop-blur">
                   <span className="text-sm text-white/90">{s.n}</span>
@@ -94,7 +96,7 @@ export default function Process() {
               <div
                 key={`label-${i}`}
                 className="absolute z-10 -translate-x-1/2 -translate-y-full"
-                style={{ left: `${(x / W) * 100}%`, top: `${(y / H) * 100}%` }}
+                style={{ left: pct((x / W) * 100), top: pct((y / H) * 100) }}
               >
                 <div className={`text-base font-semibold sm:text-lg ${i % 2 === 0 ? "text-teal-300" : "text-white"}`}>
                   {s.label}

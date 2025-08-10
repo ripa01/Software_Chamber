@@ -1,5 +1,7 @@
 import Banner from "@/components/hero/Banner";
+import ContactLead from "@/components/others/ContactLead";
 import FAQ from "@/components/others/FAQ";
+import LetsTalkPanel from "@/components/others/LetsTalkPanel";
 import Testimonials from "@/components/others/Testimonials";
 import Process from "@/components/sections/Process";
 import ProjectsShowcase from "@/components/sections/ProjectsShowcase";
@@ -25,6 +27,8 @@ export default function Home() {
       <ProjectsShowcase />
       <FAQ />
       <Testimonials />
+      <ContactLead />
+      <LetsTalkPanel />
    
     </main>
   );

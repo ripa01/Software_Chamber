@@ -1,5 +1,8 @@
 import Banner from "@/components/hero/Banner";
+import FAQ from "@/components/others/FAQ";
+import Testimonials from "@/components/others/Testimonials";
 import Process from "@/components/sections/Process";
+import ProjectsShowcase from "@/components/sections/ProjectsShowcase";
 import Services from "@/components/sections/Services";
 import StackShowcase from "@/components/sections/StackShowcase";
 import ValueProposition from "@/components/sections/ValueProposition";
@@ -19,6 +22,9 @@ export default function Home() {
       <Process />
       <WhyChoose />
       <StackShowcase />
+      <ProjectsShowcase />
+      <FAQ />
+      <Testimonials />
    
     </main>
   );

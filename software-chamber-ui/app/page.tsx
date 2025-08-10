@@ -1,6 +1,8 @@
 import Banner from "@/components/hero/Banner";
+import Process from "@/components/sections/Process";
 import Services from "@/components/sections/Services";
 import ValueProposition from "@/components/sections/ValueProposition";
+import WhyChoose from "@/components/sections/WhyChoose";
 
 
 
@@ -13,6 +15,8 @@ export default function Home() {
       <Banner/>
       <ValueProposition />
       <Services />
+      <Process />
+      <WhyChoose />
    
     </main>
   );

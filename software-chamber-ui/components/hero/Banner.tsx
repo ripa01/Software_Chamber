@@ -89,13 +89,48 @@ function EmojiPill({ children }: { children: React.ReactNode }) {
   )
 }
 
+// function SideTags() {
+//   const tags = [
+//     { label: "Website Development", side: "left", top: "34%" },
+//     { label: "Mobile App Development", side: "left", top: "72%" },
+//     { label: "UI/UX Engineering", side: "right", top: "44%" },
+//     { label: "Software Services", side: "right", top: "76%" },
+//   ] as const
+
+//   return (
+//     <>
+//       {tags.map((t, i) => (
+//         <div
+//           key={i}
+//           className={[
+//             "pointer-events-none fixed z-10 hidden md:block",
+//             t.side === "left" ? "left-3" : "right-3",
+//           ].join(" ")}
+//           style={{ top: t.top }}
+//         >
+//           <div className="flex items-center gap-3">
+//             {t.side === "right" && <Line />} {/* line first if right */}
+//             <div className="pointer-events-auto flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-[12px] ring-1 ring-white/10 backdrop-blur">
+//               <span className="grid h-5 w-5 place-items-center rounded-md bg-white/10">
+//                 <Play className="h-3 w-3" />
+//               </span>
+//               {t.label}
+//             </div>
+//             {t.side === "left" && <Line />}
+//           </div>
+//         </div>
+//       ))}
+//     </>
+//   )
+// }
+
 function SideTags() {
   const tags = [
-    { label: "Website Development", side: "left", top: "34%" },
-    { label: "Mobile App Development", side: "left", top: "72%" },
-    { label: "UI/UX Engineering", side: "right", top: "44%" },
-    { label: "Software Services", side: "right", top: "76%" },
-  ] as const
+    { label: "Website Development", side: "left",  y: "-6rem" },
+    { label: "Mobile App Development", side: "left",  y: "6rem"  },
+    { label: "UI/UX Engineering",     side: "right", y: "-3rem" },
+    { label: "Software Services",     side: "right", y: "9rem"  },
+  ] as const;
 
   return (
     <>
@@ -103,13 +138,13 @@ function SideTags() {
         <div
           key={i}
           className={[
-            "pointer-events-none fixed z-10 hidden md:block",
+            "pointer-events-none absolute z-10 hidden md:block top-1/2 -translate-y-1/2",
             t.side === "left" ? "left-3" : "right-3",
           ].join(" ")}
-          style={{ top: t.top }}
+          style={{ transform: `translateY(calc(-50% + ${t.y}))` }}
         >
           <div className="flex items-center gap-3">
-            {t.side === "right" && <Line />} {/* line first if right */}
+            {t.side === "right" && <Line />}
             <div className="pointer-events-auto flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-[12px] ring-1 ring-white/10 backdrop-blur">
               <span className="grid h-5 w-5 place-items-center rounded-md bg-white/10">
                 <Play className="h-3 w-3" />
@@ -121,8 +156,9 @@ function SideTags() {
         </div>
       ))}
     </>
-  )
+  );
 }
+
 
 function Line() {
   return <div className="h-px w-20 bg-white/10" />

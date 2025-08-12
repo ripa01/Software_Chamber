@@ -1,33 +1,47 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowRight, ArrowLeft, ArrowRightCircle, BadgeCheck, Cog, Sparkles, Sun } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  ArrowRightCircle,
+  BadgeCheck,
+  Cog,
+  Sparkles,
+  Sun,
+} from "lucide-react";
 
 type Benefit = {
   title: string;
   desc: string;
   icon: React.ReactNode;
+  featured?: boolean; 
 };
 
 const BENEFITS: Benefit[] = [
   {
     title: "Efficiency",
-    desc: "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
+    desc:
+      "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
     icon: <BadgeCheck className="h-4 w-4" />,
   },
   {
     title: "Adaptability",
-    desc: "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
+    desc:
+      "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
     icon: <Sun className="h-4 w-4" />,
   },
   {
     title: "Scalability",
-    desc: "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
+    desc:
+      "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
     icon: <Sparkles className="h-4 w-4" />,
+    // featured: true, // <- uncomment to highlight this one
   },
   {
     title: "Precision",
-    desc: "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
+    desc:
+      "Software Chamber specializes in creating powerful, scalable, and secure e-commerce solutions tailored to business needs.",
     icon: <Cog className="h-4 w-4" />,
   },
 ];
@@ -36,12 +50,15 @@ export default function WhyChoose() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollByCards = (dir: "prev" | "next") => {
-    if (!trackRef.current) return;
     const el = trackRef.current;
-    const cardWidth = el.firstElementChild
-      ? (el.firstElementChild as HTMLElement).offsetWidth
-      : 320;
-    el.scrollBy({ left: (dir === "next" ? 1 : -1) * (cardWidth + 20), behavior: "smooth" });
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const gap = 20; 
+    const cardWidth = card ? card.offsetWidth : 320;
+    el.scrollBy({
+      left: (dir === "next" ? 1 : -1) * (cardWidth + gap),
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -49,7 +66,7 @@ export default function WhyChoose() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold leading-tight tracking-[-0.015em] sm:text-5xl">
+          <h2 className="font-display text-3xl font-extrabold leading-tight tracking-[-0.015em] sm:text-5xl">
             Why Choose
             <span className="block">Softwarechamber</span>
           </h2>
@@ -72,11 +89,11 @@ export default function WhyChoose() {
 
         {/* Cards + Arrows */}
         <div className="relative mt-10 sm:mt-14">
-          {/* Prev/Next buttons (show from sm and up) */}
+          {/* Prev/Next buttons (>= sm) */}
           <button
             onClick={() => scrollByCards("prev")}
             aria-label="Previous"
-            className="absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-black text-white shadow-xl ring-1 ring-black/10 sm:grid h-10 w-10 place-items-center hover:bg-black/90"
+            className="absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 place-items-center rounded-full bg-black text-white shadow-xl ring-1 ring-black/10 sm:grid h-10 w-10 hover:bg-black/90"
           >
             <ArrowLeft className="h-5 w-5" />
           </button>
@@ -84,70 +101,92 @@ export default function WhyChoose() {
           <button
             onClick={() => scrollByCards("next")}
             aria-label="Next"
-            className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-black text-white shadow-xl ring-1 ring-black/10 sm:grid h-10 w-10 place-items-center hover:bg-black/90"
+            className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 place-items-center rounded-full bg-black text-white shadow-xl ring-1 ring-black/10 sm:grid h-10 w-10 hover:bg-black/90"
           >
             <ArrowRight className="h-5 w-5" />
           </button>
 
           {/* Track */}
-        <div
-  ref={trackRef}
-  className={`
-    hide-scrollbar
-    flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory
-    pb-2 [-ms-overflow-style:none] [scrollbar-width:none]
-  `}
->
+          <div
+            ref={trackRef}
+            className="hide-scrollbar flex items-stretch gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {/* hide scrollbars (webkit) */}
             <style jsx>{`
-              div::-webkit-scrollbar {
+              .hide-scrollbar::-webkit-scrollbar {
                 display: none;
               }
             `}</style>
 
-            {BENEFITS.map((b, i) => (
-              <article
-                key={b.title}
-                className={`
-                  snap-start shrink-0 rounded-3xl p-6 sm:p-7 ring-1
-                  ${i === 2 ? "bg-emerald-500/90 text-white ring-emerald-500/30" : "bg-slate-100 text-[#0B0F13] ring-black/10"}
-                  shadow-[0_10px_40px_-12px_rgba(0,0,0,0.12)]
-                  w-[85%] sm:w-[340px]
-                `}
-              >
-                <div className="flex items-start justify-between">
-                  <h3 className={`text-xl font-bold ${i === 2 ? "text-white" : "text-[#0B0F13]"}`}>
-                    {b.title}
-                  </h3>
-                  <span
-                    className={`grid h-8 w-8 place-items-center rounded-full ring-1 ${
-                      i === 2 ? "bg-white/15 ring-white/30 text-white" : "bg-emerald-100 text-emerald-600 ring-emerald-200"
+            {BENEFITS.map((b) => {
+              const featured = !!b.featured;
+              return (
+                <article
+                  key={b.title}
+                  data-card
+                  className={[
+                    "snap-start shrink-0 w-[85%] sm:w-[340px]",
+                    "rounded-3xl ring-1 p-6 sm:p-7",
+                    "shadow-[0_10px_40px_-12px_rgba(0,0,0,0.12)]",
+                    "flex flex-col h-full",
+                    featured
+                      ? "bg-emerald-500 text-white ring-emerald-500/30"
+                      : "bg-slate-100 text-[#0B0F13] ring-black/10",
+                  ].join(" ")}
+                >
+                  {/* header */}
+                  <div className="flex items-start justify-between">
+                    <h3
+                      className={`text-xl font-bold ${
+                        featured ? "text-white" : "text-[#0B0F13]"
+                      }`}
+                    >
+                      {b.title}
+                    </h3>
+                    <span
+                      className={[
+                        "grid h-8 w-8 place-items-center rounded-full ring-1",
+                        featured
+                          ? "bg-white/15 ring-white/30 text-white"
+                          : "bg-emerald-100 text-emerald-600 ring-emerald-200",
+                      ].join(" ")}
+                      aria-hidden
+                    >
+                      {b.icon}
+                    </span>
+                  </div>
+
+                  {/* divider */}
+                  <div
+                    className={`my-4 h-px w-full ${
+                      featured ? "bg-white/25" : "bg-black/10"
                     }`}
+                  />
+
+                  {/* body (grows) */}
+                  <p
+                    className={`text-sm leading-6 ${
+                      featured ? "text-white/90" : "text-black/60"
+                    }`}
+                  >
+                    {b.desc}
+                  </p>
+
+                  {/* footer button (sticks to bottom) */}
+                  <span
+                    className={[
+                      "mt-auto inline-grid h-10 w-10 place-items-center rounded-full ring-1 shadow-md",
+                      featured
+                        ? "bg-white text-[#0B0F13] ring-white/50"
+                        : "bg-white text-[#0B0F13] ring-black/10",
+                    ].join(" ")}
                     aria-hidden
                   >
-                    {b.icon}
+                    <ArrowRightCircle className="h-5 w-5" />
                   </span>
-                </div>
-
-                <div className={`my-4 h-[1px] w-full ${i === 2 ? "bg-white/25" : "bg-black/10"}`} />
-
-                <p className={`text-sm leading-6 ${i === 2 ? "text-white/90" : "text-black/60"}`}>
-                  {b.desc}
-                </p>
-
-                {/* bottom arrow button */}
-                <span
-                  className={`mt-6 inline-grid h-10 w-10 place-items-center rounded-full ring-1 shadow-md ${
-                    i === 2
-                      ? "bg-white text-[#0B0F13] ring-white/50"
-                      : "bg-white text-[#0B0F13] ring-black/10"
-                  }`}
-                  aria-hidden
-                >
-                  <ArrowRightCircle className="h-5 w-5" />
-                </span>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

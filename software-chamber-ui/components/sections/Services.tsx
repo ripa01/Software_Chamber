@@ -33,9 +33,8 @@ export default function Services() {
   return (
     <section className="relative bg-white text-[#0B0F13]">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-        {/* Header row */}
         <div className="mb-10 flex items-start justify-between gap-6 sm:mb-12">
-          <h2 className="text-4xl font-extrabold tracking-[-0.015em] sm:text-6xl">
+          <h2 className="text-4xl font-extrabold tracking-[-0.015em] sm:text-5xl">
             Services{" "}
             <span className="inline-flex -translate-y-1 align-middle text-emerald-600">
               <Sparkles className="h-8 w-8" />
@@ -53,14 +52,12 @@ export default function Services() {
           </Link>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
             <ServiceCard key={i} {...s} />
           ))}
         </div>
 
-        {/* Mobile 'All Services' button */}
         <div className="mt-8 sm:hidden">
           <Link
             href="/services"
@@ -105,7 +102,6 @@ function ServiceCard({ title, desc, href, highlight }: Service) {
           </p>
         </div>
 
-        {/* circular arrow button */}
         <span
           className={`mt-6 inline-grid h-12 w-12 place-items-center rounded-full shadow-xl ring-1 ${
             highlight

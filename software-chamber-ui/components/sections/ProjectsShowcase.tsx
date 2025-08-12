@@ -6,15 +6,15 @@ import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 type Industry = { label: string; img: string };
 
 const INDUSTRIES: Industry[] = [
-  { label: "Tech",         img: "/images/industries/tech.jpg" },
-  { label: "Health Care",  img: "/images/industries/health.jpg" },
-  { label: "Developers",   img: "/images/industries/dev.jpg" },
-  { label: "Software",     img: "/images/industries/software.jpg" },
-  { label: "Entertainment",img: "/images/industries/entertainment.jpg" },
-  { label: "Hospitality",  img: "/images/industries/hospitality.jpg" },
-  { label: "Manufacturing",img: "/images/industries/manufacturing.jpg" },
-  { label: "Energy",       img: "/images/industries/energy.jpg" },
-  { label: "Auto Motive",  img: "/images/industries/auto.jpg" },
+  { label: "Tech",         img: "/images/job.jpg" },
+  { label: "Health Care",  img: "/images/job.jpg" },
+  { label: "Developers",   img: "/images/job.jpg"},
+  { label: "Software",     img: "/images/job.jpg" },
+  { label: "Entertainment",img: "/images/job.jpg" },
+  { label: "Hospitality",  img: "/images/job.jpg" },
+  { label: "Manufacturing",img: "/images/job.jpg" },
+  { label: "Energy",       img: "/images/job.jpg" },
+  { label: "Auto Motive",  img: "/images/job.jpg"},
 ];
 
 export default function ProjectsShowcase() {

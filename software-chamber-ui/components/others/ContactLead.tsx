@@ -25,43 +25,49 @@ export default function ContactLead() {
         </div>
 
         {/* Grid */}
-        <div className="mt-10 grid grid-cols-1 items-start gap-8 md:mt-14 md:grid-cols-2 md:gap-12">
-          {/* Left image */}
-          <div className="order-2 md:order-1">
-            <div className="overflow-hidden rounded-[22px] ring-1 ring-black/10 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.45)]">
-              <img
-                src="/images/contact/portrait.jpg"
-                alt="Happy client"
-                className="aspect-[4/3] h-auto w-full object-cover"
-              />
-            </div>
-          </div>
+      <div className="mt-10 grid grid-cols-1 items-stretch gap-8 md:mt-14 md:grid-cols-2 md:gap-12">
+  {/* Left image */}
+  <div className="order-2 md:order-1 h-full">
+    <div className="h-full overflow-hidden rounded-[22px] ring-1 ring-black/10 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.45)]">
+      <img
+        src="/images/client.png"
+        alt="Happy client"
+        className="h-full w-full object-cover"
+      />
+    </div>
+  </div>
 
-          {/* Form */}
-          <form onSubmit={submit} className="order-1 space-y-4 md:order-2">
-            <Input placeholder="First Name" name="firstName" />
-            <Input placeholder="Last Name" name="lastName" />
-            <Input placeholder="Email" type="email" name="email" />
+  {/* Form */}
+  <form
+    onSubmit={submit}
+    className="order-1 space-y-4 md:order-2 h-full flex flex-col justify-between"
+  >
+    <div className="space-y-4">
+      <Input placeholder="First Name" name="firstName" />
+      <Input placeholder="Last Name" name="lastName" />
+      <Input placeholder="Email" type="email" name="email" />
 
-            {/* Phone row */}
-            <div className="flex gap-3">
-              <SelectCountry />
-              <Input placeholder="Phone" name="phone" className="flex-1" />
-            </div>
+      {/* Phone row */}
+      <div className="flex gap-3">
+        <SelectCountry />
+        <Input placeholder="Phone" name="phone" className="flex-1" />
+      </div>
 
-            <Input placeholder="Job Title" name="jobTitle" />
-            <Textarea placeholder="Your message" name="message" rows={6} />
+      <Input placeholder="Job Title" name="jobTitle" />
+      <Textarea placeholder="Your message" name="message" rows={6} />
+    </div>
 
-            {/* CTA */}
-            <button
-              type="submit"
-              className="group inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_12px_30px_-10px_rgba(16,185,129,0.7)] transition hover:translate-y-[-1px]"
-            >
-              Submit
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-white text-[#0B0F13]">
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </button>
+      <div>
+      <button
+        type="submit"
+        className="group inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-white shadow-[0_12px_30px_-10px_rgba(16,185,129,0.7)] transition hover:translate-y-[-1px]"
+      >
+        Submit
+        <span className="grid h-6 w-6 place-items-center rounded-full bg-white text-[#0B0F13]">
+          <ArrowRight className="h-3 w-3" />
+        </span>
+      </button>
+    </div>
           </form>
         </div>
       </div>

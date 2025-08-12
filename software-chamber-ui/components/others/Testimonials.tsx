@@ -42,7 +42,7 @@ export default function Testimonials() {
                 <div className="flex items-center gap-4">
                   <div className="h-10 w-10 overflow-hidden rounded-full ring-1 ring-white/20">
                     <img
-                      src="/images/avatar-alex.jpg"
+                      src="/images/job.jpg"
                       alt="Alex Larkins"
                       className="h-full w-full object-cover"
                       onError={(e) => {

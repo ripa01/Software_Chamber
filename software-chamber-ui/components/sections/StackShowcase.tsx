@@ -1,11 +1,6 @@
 import React from "react"
-import { ChevronRight, Sparkles } from "lucide-react"
 
-/**
- * Section: "Our Stack Powers ..."
- * Usage: <StackShowcase />
- * Drop into any Next.js + Tailwind project.
- */
+
 export default function StackShowcase() {
   const brands = [
     { name: "Spotify", icon: "🎵", offset: "translate-y-1" },
@@ -39,17 +34,14 @@ export default function StackShowcase() {
           </h2>
         </div>
 
-        {/* Right floating pills */}
         <div className="relative ml-auto grid w-full max-w-md grid-cols-1 gap-5 sm:max-w-none sm:grid-cols-2">
-          {/* Row 1 */}
+         
           <BrandPill label={brands[0].name} icon={brands[0].icon} className="justify-self-start sm:justify-self-start" />
-          <BrandPill label={brands[1].name} icon={brands[1].icon} className="justify-self-end sm:justify-self-end sm:-translate-y-3" />
+          <BrandPill label={brands[1].name} icon={brands[1].icon} className="justify-self-center sm:justify-self-center sm:-translate-y-3" />
 
-          {/* Row 2 */}
           <BrandPill label={brands[2].name} icon={brands[2].icon} className="justify-self-start sm:justify-self-start -translate-y-2" />
-          <BrandPill label={brands[3].name} icon={brands[3].icon} className="justify-self-end sm:justify-self-end -translate-y-6" />
+          <BrandPill label={brands[3].name} icon={brands[3].icon} className="justify-self-center sm:justify-self-center -translate-y-6" />
 
-          {/* Row 3 */}
           <BrandPill label={brands[4].name} icon={brands[4].icon} className="col-span-1 sm:col-span-1 sm:justify-self-start -translate-y-6" />
         </div>
       </div>
@@ -64,10 +56,7 @@ function BrandPill({ label, icon, className = "" }: { label: string; icon: strin
         {icon}
       </span>
       <span className="text-[15px] font-semibold tracking-wide">{label}</span>
-      <span className="ml-2 inline-grid h-6 w-6 place-items-center rounded-full bg-white/20 ring-1 ring-white/30 transition group-hover:translate-x-0.5">
-        <ChevronRight className="h-4 w-4" />
-      </span>
-      {/* soft drop shadow plate */}
+
       <div className="pointer-events-none absolute inset-x-6 -bottom-3 h-5 rounded-full bg-black/30 blur-xl" />
     </div>
   )

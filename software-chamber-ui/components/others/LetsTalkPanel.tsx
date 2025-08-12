@@ -42,7 +42,7 @@ export default function LetsTalkPanel() {
 
           {/* Right image */}
           <div className="md:col-span-3">
-            <div className="ml-auto w-full max-w-[260px] overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.6)]">
+            <div className=" w-full max-w-[260px] overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-[0_18px_60px_-30px_rgba(0,0,0,0.6)]">
               <img
                 src="/images/meet.jpeg"
                 alt="Team meeting"
@@ -68,7 +68,6 @@ export default function LetsTalkPanel() {
   );
 }
 
-/* — helpers — */
 
 function Social({ href, label }: { href: string; label: string }) {
   return (

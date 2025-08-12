@@ -42,7 +42,8 @@ export default function StackShowcase() {
           <BrandPill label={brands[2].name} icon={brands[2].icon} className="justify-self-start sm:justify-self-start -translate-y-2" />
           <BrandPill label={brands[3].name} icon={brands[3].icon} className="justify-self-center sm:justify-self-center -translate-y-6" />
 
-          <BrandPill label={brands[4].name} icon={brands[4].icon} className="col-span-1 sm:col-span-1 sm:justify-self-start -translate-y-6" />
+          <BrandPill label={brands[4].name} icon={brands[4].icon} className="justify-self-start sm:justify-self-start -translate-y-6" />
+          <BrandPill label={brands[0].name} icon={brands[3].icon} className="justify-self-center sm:justify-self-center -translate-y-6" />
         </div>
       </div>
     </section>

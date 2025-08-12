@@ -1,6 +1,6 @@
-import React from "react"
-import { ArrowRight, Menu, Play, ExternalLink, Sparkles } from "lucide-react"
-
+import React from "react";
+import { ArrowRight, Menu, Play, ExternalLink, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -12,12 +12,12 @@ export default function Page() {
         <div className="flex items-center gap-2">
           <button className="group flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-sm text-white/90 ring-1 ring-white/10 backdrop-blur transition hover:bg-white/10">
             Contact Us
-            <span className="grid h-6 w-6 place-items-center rounded-full bg-white/90 text-[#0B0F13] transition group-hover:bg-white">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-white/90 text-[#0B0F13] transition group-hover:bg-white">
               <ArrowRight className="h-4 w-4" />
             </span>
           </button>
-          <button className="grid h-10 w-10 place-items-center rounded-full bg-white/5 ring-1 ring-white/10 backdrop-blur transition hover:bg-white/10">
-            <Menu className="h-5 w-5" />
+          <button className="grid h-10 w-10 place-items-center rounded-full border-2  bg-[#0B0F13] shadow-lg transition hover:bg-teal-300/10">
+            <Menu className="h-6 w-6 text-white-300" />
           </button>
         </div>
       </header>
@@ -30,11 +30,11 @@ export default function Page() {
           Smarter ideas, instant solutions
         </span>
 
-        <h1 className="text-balance text-[42px] font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+        <h1 className="text-[32px] sm:text-5xl md:text-6xl text-balance font-extrabold leading-[1.05] tracking-tight">
           <span className="text-white/90">We are your </span>
           <span className="text-teal-300">Software</span>
           <br className="hidden sm:block" />
-          <span className="text-white/90">Development </span>
+          <span className="text-white/90"> Development </span>
           <span className="inline-flex items-center gap-2 align-middle">
             <EmojiPill>🧩</EmojiPill>
             <EmojiPill>👥</EmojiPill>
@@ -62,23 +62,34 @@ export default function Page() {
 
       <div className="h-24" />
     </main>
-  )
+  );
 }
 
 function Logo() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="relative h-9 w-9 overflow-hidden rounded-xl ring-1 ring-white/10">
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 opacity-90" />
-        <div className="absolute inset-[2px] rounded-[10px] bg-[#0B0F13]" />
-        <div className="relative z-10 grid h-full w-full place-items-center text-xl">🧠</div>
-      </div>
-      <div className="leading-tight">
-        <div className="text-sm font-semibold tracking-wide">Software</div>
-        <div className="text-[11px] text-white/60">Chamber</div>
+    <div className="flex items-center gap-3 min-w-[120px] max-w-[160px]">
+    <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-2 ring-emerald-400/40 shadow-lg flex-shrink-0">
+  <Image
+    src="/images/logo.png"
+    alt="Software Chamber Logo"
+    fill
+    sizes="40px"
+    className="object-cover"
+    priority
+  />
+</div>
+
+
+      <div className="leading-tight truncate">
+        <div className="text-base font-bold tracking-wide text-teal-300 truncate">
+          Software
+        </div>
+        <div className="text-xs text-white/60 font-medium truncate">
+          Chamber
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 function EmojiPill({ children }: { children: React.ReactNode }) {
@@ -86,50 +97,15 @@ function EmojiPill({ children }: { children: React.ReactNode }) {
     <span className="inline-grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-2xl shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur">
       {children}
     </span>
-  )
+  );
 }
-
-// function SideTags() {
-//   const tags = [
-//     { label: "Website Development", side: "left", top: "34%" },
-//     { label: "Mobile App Development", side: "left", top: "72%" },
-//     { label: "UI/UX Engineering", side: "right", top: "44%" },
-//     { label: "Software Services", side: "right", top: "76%" },
-//   ] as const
-
-//   return (
-//     <>
-//       {tags.map((t, i) => (
-//         <div
-//           key={i}
-//           className={[
-//             "pointer-events-none fixed z-10 hidden md:block",
-//             t.side === "left" ? "left-3" : "right-3",
-//           ].join(" ")}
-//           style={{ top: t.top }}
-//         >
-//           <div className="flex items-center gap-3">
-//             {t.side === "right" && <Line />} {/* line first if right */}
-//             <div className="pointer-events-auto flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-[12px] ring-1 ring-white/10 backdrop-blur">
-//               <span className="grid h-5 w-5 place-items-center rounded-md bg-white/10">
-//                 <Play className="h-3 w-3" />
-//               </span>
-//               {t.label}
-//             </div>
-//             {t.side === "left" && <Line />}
-//           </div>
-//         </div>
-//       ))}
-//     </>
-//   )
-// }
 
 function SideTags() {
   const tags = [
-    { label: "Website Development", side: "left",  y: "-6rem" },
-    { label: "Mobile App Development", side: "left",  y: "6rem"  },
-    { label: "UI/UX Engineering",     side: "right", y: "-3rem" },
-    { label: "Software Services",     side: "right", y: "9rem"  },
+    { label: "Website Development", side: "left", y: "22rem" },
+    { label: "Mobile App Development", side: "left", y: "9rem" },
+    { label: "UI/UX Engineering", side: "right", y: "21rem" },
+    { label: "Software Services", side: "right", y: "8rem" },
   ] as const;
 
   return (
@@ -138,16 +114,16 @@ function SideTags() {
         <div
           key={i}
           className={[
-            "pointer-events-none absolute z-10 hidden md:block top-1/2 -translate-y-1/2",
-            t.side === "left" ? "left-3" : "right-3",
+            "pointer-events-none absolute z-20 top-1/2 -translate-y-1/2 hidden xl:block",
+            t.side === "left" ? "left-0" : "right-0",
           ].join(" ")}
           style={{ transform: `translateY(calc(-50% + ${t.y}))` }}
         >
           <div className="flex items-center gap-3">
             {t.side === "right" && <Line />}
-            <div className="pointer-events-auto flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-[12px] ring-1 ring-white/10 backdrop-blur">
+            <div className="pointer-events-auto flex items-center gap-2 rounded-xl bg-[#181C22] px-4 py-2 text-[13px] font-medium text-white ring-1 ring-white/10 shadow-md">
               <span className="grid h-5 w-5 place-items-center rounded-md bg-white/10">
-                <Play className="h-3 w-3" />
+                <Play className="h-3 w-3 text-teal-300" />
               </span>
               {t.label}
             </div>
@@ -159,14 +135,13 @@ function SideTags() {
   );
 }
 
-
 function Line() {
-  return <div className="h-px w-20 bg-white/10" />
+  return <div className="h-px w-20 bg-white/10" />;
 }
 
 function GlassGantt() {
   return (
-    <div className="relative mx-auto max-w-4xl rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur">
+    <div className="relative mx-auto max-w-4xl rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur shadow-2xl">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Timeline */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/5 to-white/0 p-4 ring-1 ring-white/10">
@@ -177,9 +152,27 @@ function GlassGantt() {
           </div>
           <div className="relative h-48 rounded-xl bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.06),transparent_60%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.05),transparent_60%)]">
             {/* bars */}
-            <Bar label="Mobile app" left="28%" top="16%" width="40%" color="bg-sky-400/80" />
-            <Bar label="Software" left="8%" top="48%" width="46%" color="bg-cyan-300/80" />
-            <Bar label="Website" left="38%" top="70%" width="36%" color="bg-emerald-300/80" />
+            <Bar
+              label="Mobile app"
+              left="28%"
+              top="16%"
+              width="40%"
+              color="bg-sky-400/80"
+            />
+            <Bar
+              label="Software"
+              left="8%"
+              top="48%"
+              width="46%"
+              color="bg-cyan-300/80"
+            />
+            <Bar
+              label="Website"
+              left="38%"
+              top="70%"
+              width="36%"
+              color="bg-emerald-300/80"
+            />
           </div>
           <div className="mt-3 flex justify-end gap-1 opacity-60">
             {Array.from({ length: 4 }).map((_, i) => (
@@ -190,8 +183,10 @@ function GlassGantt() {
 
         {/* Copy card */}
         <div className="relative rounded-2xl bg-gradient-to-b from-white/5 to-white/0 p-6 ring-1 ring-white/10">
-          <h3 className="text-lg font-semibold">Software Service
-            <br />Solutions
+          <h3 className="text-lg font-semibold">
+            Software Service
+            <br />
+            Solutions
           </h3>
           <p className="mt-3 text-sm leading-6 text-white/70">
             Plan, track, and manage projects with precision tools.
@@ -209,10 +204,22 @@ function GlassGantt() {
         <div className="h-3 rounded-2xl bg-white/5 ring-1 ring-white/10" />
       </div>
     </div>
-  )
+  );
 }
 
-function Bar({ label, left, top, width, color }: { label: string; left: string; top: string; width: string; color: string }) {
+function Bar({
+  label,
+  left,
+  top,
+  width,
+  color,
+}: {
+  label: string;
+  left: string;
+  top: string;
+  width: string;
+  color: string;
+}) {
   return (
     <div
       className={`absolute rounded-xl px-3 py-2 text-xs font-medium text-[#0B0F13] shadow-lg ${color}`}
@@ -220,7 +227,7 @@ function Bar({ label, left, top, width, color }: { label: string; left: string; 
     >
       {label}
     </div>
-  )
+  );
 }
 
 function BackgroundFX() {
@@ -246,5 +253,5 @@ function BackgroundFX() {
         />
       </div>
     </>
-  )
+  );
 }
